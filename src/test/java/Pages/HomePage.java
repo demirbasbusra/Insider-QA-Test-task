@@ -10,8 +10,14 @@ public class HomePage {
         this.driver=driver;
     }
 
+    By cookieAcceptBtn = By.cssSelector("#wt-cli-accept-all-btn");
     By MoreBtn = By.xpath("//span[normalize-space()='More']");
     By CareerBtn = By.xpath("//h5[normalize-space()='Careers']");
+
+    //Firstly click to Accept Cookie Button
+    public void clickCookieAccept() {
+        driver.findElement(cookieAcceptBtn).click();
+    }
 
     //Method to click MORE button
     public void clickMore() {
