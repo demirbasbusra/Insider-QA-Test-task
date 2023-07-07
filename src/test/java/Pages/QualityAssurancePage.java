@@ -1,12 +1,14 @@
 package Pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class QualityAssurancePage {
     static WebDriver driver;
@@ -23,10 +25,8 @@ public class QualityAssurancePage {
     By filterIstanbul = By.xpath("//span[@id='select2-filter-by-location-container']");
     By empty = By.cssSelector("#resultCounter");
     By jobName = By.xpath("//p[normalize-space()='Software Quality Assurance Engineer (Remote)']");
+
     By viewRoleButton = By.cssSelector(".btn.btn-navy.rounded.pt-2.pr-5.pb-2.pl-5[href='https://jobs.lever.co/useinsider/0ba4065b-955a-4661-ad4a-f32479f63757']");
-
-    By applyForJobButton = By.xpath("//div[@class='postings-btn-wrapper']//a[@class='postings-btn template-btn-submit shamrock'][normalize-space()='Apply for this job']");
-
 
     //Method to click on See All QA Jobs Button
     public void clickAllQAJobsButton() {
@@ -38,7 +38,6 @@ public class QualityAssurancePage {
         driver.findElement(filterAllButton).click();
     }
 
-
     //Check presence of jobs list
     public void checkEmpty() {
         wait.until(ExpectedConditions.presenceOfElementLocated(empty));
@@ -46,7 +45,7 @@ public class QualityAssurancePage {
     }
 
     //Sayfayı Job sonuçlarına göre çıkan kısma indirmek için
-    public static void scrollDownForJobResults(){
+    public static void scrollDownForJobResults() {
         //js.executeScript("window.scrollBy(0,700)");
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,900)");
@@ -54,17 +53,13 @@ public class QualityAssurancePage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", elementJobResults);*/
     }
 
-    public void clickJobName(){
+    public void clickJobName() {
         driver.findElement(jobName).click();
     }
+
     //Click a job detail
     public void clickViewRole() {
         driver.findElement(viewRoleButton).click();
     }
 
-
-    //Click  “Apply Now” button
-    public void clickApplyForJob() {
-        driver.findElement(applyForJobButton).click();
-    }
 }
